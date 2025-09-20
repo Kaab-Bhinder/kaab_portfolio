@@ -1,10 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { assets } from "@/assets/assets";
-import programmingIcon from "../assets/algorithm.png";
-import reactIcon from "../assets/react.png";
-import databaseIcon from "../assets/database.png";
-import wordpressIcon from "../assets/wordpress.png";
+import React from "react";
+import { motion } from "framer-motion";   // ✅ correct import
 import {
   SiJavascript,
   SiPython,
@@ -15,196 +10,194 @@ import {
   SiMongodb,
   SiMysql,
   SiWordpress,
-  SiElementor,
-  SiWoocommerce,
+  SiTailwindcss,
+  SiGit,
+  SiGithub,
+  SiFigma,
+  SiPostman,
 } from "react-icons/si";
-import { FaJava } from "react-icons/fa";
-import { BsDatabase } from "react-icons/bs";
-import { BiData } from "react-icons/bi";
-import { CgDatabase } from "react-icons/cg";
-import { TbDatabase } from "react-icons/tb";
-import { MdStorage } from "react-icons/md";
-import { AiOutlineDatabase } from "react-icons/ai";
-import { PiDatabaseBold } from "react-icons/pi";
-import { LuDatabase } from "react-icons/lu";
-import { VscDatabase } from "react-icons/vsc";
+import { FaJava, FaNodeJs, FaElementor, FaShoppingCart, FaCode } from "react-icons/fa";
 
-const skillCategories = [
+const skillsData = [
   {
-    title: "Programming Languages",
-    icon: <img src="/algorithm.png" alt="Programming" className="w-10 h-10" />,
+    category: "Frontend Development",
     skills: [
-      {
-        name: "JavaScript",
-        percent: 90,
-        icon: <BiData className="text-yellow-400" />,
-      },
-      {
-        name: "Java",
-        percent: 80,
-        icon: <CgDatabase className="text-[#007396]" />,
-      },
-      {
-        name: "Python",
-        percent: 85,
-        icon: <TbDatabase className="text-blue-400" />,
-      },
-      {
-        name: "C++",
-        percent: 70,
-        icon: <MdStorage className="text-blue-600" />,
-      },
+      { name: "React.js", icon: SiReact, level: 90 },
+      { name: "Next.js", icon: SiNextdotjs, level: 85 },
+      { name: "JavaScript", icon: SiJavascript, level: 90 },
+      { name: "Tailwind CSS", icon: SiTailwindcss, level: 85 },
+      { name: "GSAP", icon: SiGreensock, level: 70 },
     ],
   },
   {
-    title: "Web Development Frameworks",
-    icon: <img src="/react.png" alt="Web" className="w-10 h-10" />,
+    category: "Backend & Database",
     skills: [
-      {
-        name: "React.js",
-        percent: 90,
-        icon: <PiDatabaseBold className="text-cyan-400" />,
-      },
-      {
-        name: "Next.js",
-        percent: 85,
-        icon: <LuDatabase className="text-gray-200" />,
-      },
-      {
-        name: "GSAP",
-        percent: 70,
-        icon: <VscDatabase className="text-green-500" />,
-      },
+      { name: "Node.js", icon: FaNodeJs, level: 80 },
+      { name: "MongoDB", icon: SiMongodb, level: 80 },
+      { name: "MySQL", icon: SiMysql, level: 75 },
+      { name: "Python", icon: SiPython, level: 85 },
     ],
   },
   {
-    title: "Databases",
-    icon: <img src="/database.png" alt="Database" className="w-10 h-10" />,
+    category: "Programming Languages",
     skills: [
-      {
-        name: "MongoDB",
-        percent: 80,
-        icon: <BiData className="text-green-500" />,
-      },
-      {
-        name: "SQL",
-        percent: 75,
-        icon: <CgDatabase className="text-blue-400" />,
-      },
+      { name: "JavaScript", icon: SiJavascript, level: 90 },
+      { name: "Python", icon: SiPython, level: 85 },
+      { name: "Java", icon: FaJava, level: 80 },
+      { name: "C++", icon: SiCplusplus, level: 70 },
     ],
   },
   {
-    title: "WordPress",
-    icon: <img src="/wordpress.png" alt="WordPress" className="w-10 h-10" />,
+    category: "Tools & Platforms",
     skills: [
-      {
-        name: "WordPress",
-        percent: 85,
-        icon: <MdStorage className="text-blue-400" />,
-      },
-      {
-        name: "Elementor",
-        percent: 80,
-        icon: <AiOutlineDatabase className="text-pink-500" />,
-      },
-      {
-        name: "WooCommerce",
-        percent: 75,
-        icon: <LuDatabase className="text-purple-400" />,
-      },
+      { name: "Git", icon: SiGit, level: 85 },
+      { name: "GitHub", icon: SiGithub, level: 85 },
+      { name: "VS Code", icon: FaCode, level: 90 },
+      { name: "Figma", icon: SiFigma, level: 75 },
+      { name: "Postman", icon: SiPostman, level: 80 },
+    ],
+  },
+  {
+    category: "WordPress Development",
+    skills: [
+      { name: "WordPress", icon: SiWordpress, level: 85 },
+      { name: "Elementor", icon: FaElementor, level: 80 },
+      { name: "WooCommerce", icon: FaShoppingCart, level: 75 },
     ],
   },
 ];
 
 const Skills = () => {
-  const [hovered, setHovered] = useState(null);
-  const [flipped, setFlipped] = useState(null);
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    setIsMobile(window.innerWidth < 640);
-  }, []);
   return (
-    <section className="w-full px-4 sm:px-6 md:px-[12%] py-10 scroll-mt-20" id="skills">
-      <h2 className="text-center text-3xl sm:text-4xl md:text-5xl font-Ovo mb-6 sm:mb-8 text-green-600 dark:text-green-400">Skills</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 max-w-6xl mx-auto">
-        {skillCategories.map((cat, idx) => (
-          <motion.div
-            key={cat.title}
-            className={`relative border-2 rounded-2xl shadow-lg overflow-hidden cursor-pointer group flex flex-col items-center justify-center min-h-[320px] transition-all duration-300${
-              isMobile && flipped === idx ? " bg-blue-50 dark:bg-blue-900" : ""
-            }`}
-            onMouseEnter={() => !isMobile && setHovered(idx)}
-            onMouseLeave={() => !isMobile && setHovered(null)}
-            onClick={
-              isMobile
-                ? () => setFlipped(flipped === idx ? null : idx)
-                : undefined
-            }
-            whileHover={
-              !isMobile
-                ? {
-                    y: 8,
-                    boxShadow: "0 8px 32px 0 rgba(31,38,135,0.10)",
-                  }
-                : {}
-            }
-            transition={{ duration: 0.4, type: "spring" }}
-          >
-            <div className="w-full h-full flex flex-col items-center justify-center p-6 transition-all duration-300">
-              <motion.div
-                initial={{ scale: 1 }}
-                animate={{ scale: !isMobile && hovered === idx ? 1.1 : 1 }}
-                className="mb-3"
-              >
-                {cat.icon && cat.icon}
-              </motion.div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2 text-center drop-shadow">
-                {cat.title}
-              </h3>
-              {isMobile && flipped !== idx && (
-                <span className="block text-base font-bold text-blue-600 mt-2 border-t border-blue-200 pt-2">
-                  Tap to see more
-                </span>
-              )}
-              <AnimatePresence>
-                {((!isMobile && hovered === idx) ||
-                  (isMobile && flipped === idx)) && (
-                  <motion.div
-                    initial={{ y: -40, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: 40, opacity: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="w-full mt-2"
-                  >
-                    {cat.skills.map((skill) => (
-                      <div key={`${idx}-${skill.name}`} className="mb-4">
-                        <div className="flex justify-between mb-1 items-center">
-                          <span className="flex items-center gap-2 text-gray-700 dark:text-gray-200 text-sm font-semibold">
-                            {skill.icon}
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      className="w-full px-4 sm:px-6 md:px-[12%] py-10 sm:py-16 md:py-20 scroll-mt-20 bg-light-bg dark:bg-dark-bg"
+      id="skills"
+    >
+      <motion.h4
+        initial={{ y: -20, opacity: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, delay: 0.3 }}
+        className="text-center mb-2 text-base sm:text-lg font-Ovo text-light-textSecondary dark:text-dark-textSecondary"
+      >
+        My Expertise
+      </motion.h4>
+
+      <motion.h2
+        initial={{ y: -20, opacity: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+        className="text-center text-3xl sm:text-4xl md:text-5xl font-Ovo mb-6 sm:mb-8 md:mb-12 text-green-600 dark:text-green-400"
+      >
+        Skills & Technologies
+      </motion.h2>
+
+      <motion.div
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        transition={{ duration: 1, delay: 0.6 }}
+        className="w-20 h-1 bg-gradient-to-r from-green-600 to-green-500 dark:from-green-400 dark:to-green-300 mx-auto mt-2 mb-10 sm:mb-12 md:mb-16 rounded-full"
+      />
+
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+          {skillsData.map((category, categoryIndex) => (
+            <motion.div
+              key={category.category}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
+              className="group"
+            >
+              <div className="bg-light-surface dark:bg-dark-surface rounded-xl lg:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-light-textSecondary/10 dark:border-dark-textSecondary/10 hover:border-light-button-primary/20 dark:hover:border-dark-button-primary/20 h-full">
+                <motion.h3
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: categoryIndex * 0.1 + 0.2 }}
+                  className="text-lg sm:text-xl lg:text-2xl font-bold text-light-text dark:text-dark-text mb-4 sm:mb-6 text-center group-hover:text-light-button-primary dark:group-hover:text-dark-button-primary transition-colors duration-300"
+                >
+                  {category.category}
+                </motion.h3>
+
+                <div className="space-y-3 sm:space-y-4">
+                  {category.skills.map((skill, skillIndex) => {
+                    const IconComponent = skill.icon;
+                    return (
+                      <motion.div
+                        key={skill.name}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{
+                          duration: 0.5,
+                          delay: categoryIndex * 0.1 + skillIndex * 0.1 + 0.3,
+                        }}
+                        className="flex items-center justify-between p-2 sm:p-3 rounded-lg lg:rounded-xl bg-light-bg dark:bg-dark-bg hover:bg-light-button-primary/5 dark:hover:bg-dark-button-primary/5 transition-colors duration-300 group/skill"
+                      >
+                        <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">
+                          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-light-button-primary/10 to-light-button-primary/20 dark:from-dark-button-primary/10 dark:to-dark-button-primary/20 flex items-center justify-center group-hover/skill:scale-110 transition-transform duration-300 flex-shrink-0">
+                            <IconComponent
+                              className="w-4 h-4 sm:w-5 sm:h-5 text-light-text dark:text-dark-text group-hover/skill:text-light-button-primary dark:group-hover/skill:text-dark-button-primary transition-colors duration-300"
+                            />
+                          </div>
+                          <span className="font-semibold text-sm sm:text-base text-light-text dark:text-dark-text group-hover/skill:text-light-button-primary dark:group-hover/skill:text-dark-button-primary transition-colors duration-300 truncate">
                             {skill.name}
                           </span>
-                          <span className="text-gray-400 text-xs font-semibold">
-                            {skill.percent}%
+                        </div>
+
+                        <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+                          <div className="w-16 sm:w-20 h-2 bg-light-textSecondary/20 dark:bg-dark-textSecondary/20 rounded-full overflow-hidden">
+                            <motion.div
+                              initial={{ width: 0 }}
+                              whileInView={{ width: `${skill.level}%` }}   
+                              transition={{
+                                duration: 1,
+                                delay: categoryIndex * 0.1 + skillIndex * 0.1 + 0.5,
+                              }}
+                              className="h-full bg-gradient-to-r from-light-button-primary to-light-button-primaryHover dark:from-dark-button-primary dark:to-dark-button-primaryHover rounded-full"
+                            />
+                          </div>
+                          <span className="text-xs sm:text-sm font-semibold text-light-textSecondary dark:text-dark-textSecondary min-w-[2rem] sm:min-w-[2.5rem] text-right">
+                            {skill.level}%
                           </span>
                         </div>
-                        <div className="w-full h-3 bg-gray-700 rounded-full overflow-hidden">
-                          <motion.div
-                            initial={{ width: 0 }}
-                            animate={{ width: `${skill.percent}%` }}
-                            transition={{ duration: 0.7, delay: 0.1 }}
-                            className="h-full bg-red-500 rounded-full"
-                          />
-                        </div>
-                      </div>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          </motion.div>
-        ))}
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+             {/* Bottom decoration with animated elements */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.8 }}
+        className="flex justify-center items-center mt-12 sm:mt-16 space-x-4"
+      >
+        <motion.div
+          animate={{ scale: [1, 1.2, 1] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="w-2 h-2 bg-red-500 dark:bg-red-400 rounded-full"
+        />
+        <div className="w-24 h-px bg-gradient-to-r from-transparent via-red-500 dark:via-red-400 to-transparent"></div>
+        <motion.div
+          animate={{ scale: [1, 1.2, 1] }}
+          transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+          className="w-2 h-2 bg-red-500 dark:bg-red-400 rounded-full"
+        />
+        <div className="w-24 h-px bg-gradient-to-r from-transparent via-red-500 dark:via-red-400 to-transparent"></div>
+        <motion.div
+          animate={{ scale: [1, 1.2, 1] }}
+          transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+          className="w-2 h-2 bg-red-500 dark:bg-red-400 rounded-full"
+        />
+      </motion.div>
       </div>
-    </section>
+    </motion.div>
   );
 };
 

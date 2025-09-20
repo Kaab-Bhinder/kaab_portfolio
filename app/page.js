@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import Services from "@/components/Services";
 import Skills from "@/components/Skills";
+import SocialSidebar from "@/components/SocialSidebar";
 import ToolsSlider from "@/components/ToolsSlider";
 import { BackgroundBeams } from "@/components/ui/background-beams";
 import Work from "@/components/Work";
@@ -36,15 +37,16 @@ export default function Home() {
   return (
     <>
       <Navbar setIsDarkMode={setIsDarkMode} isDarkMode={isDarkMode} />
-  <Header isDarkMode={isDarkMode} />
-  <ToolsSlider isDarkMode={isDarkMode} />
-  <About isDarkMode={isDarkMode} />
+      <Header />
+      <ToolsSlider isDarkMode={isDarkMode} />
+      <Services isDarkMode={isDarkMode} />
+      <Work isDarkMode={isDarkMode} />
+      <About isDarkMode={isDarkMode} />
       <Skills />
       <Experience />
-      <Services IsDarkMode={isDarkMode} />
-      <Work isDarkMode={isDarkMode} />
       <Contact isDarkMode={isDarkMode} />
       <Footer isDarkMode={isDarkMode} />
+      <SocialSidebar />
     </>
   );
 }

@@ -30,7 +30,7 @@ const Navbar = ({ setIsDarkMode, isDarkMode }) => {
   return (
     <>
       <nav
-        className={`min-w-[70vw] w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-center z-50 bg-transparent transition-all duration-300
+        className={`w-full fixed px-6 lg:px-8 xl:px-12 py-4 flex items-center justify-between z-50 bg-transparent transition-all duration-300
           ${isScroll ? 'backdrop-blur-lg bg-light-surface/70 dark:bg-dark-surface/70' : ''}`}
         style={{
           backgroundImage: `url(${isDarkMode ? assets.header_bg_color_dark.src : assets.header_bg_color.src})`,
@@ -38,20 +38,24 @@ const Navbar = ({ setIsDarkMode, isDarkMode }) => {
           backgroundPosition: 'center'
         }}
       >
-        <a href="#top">
+        {/* Logo - Left aligned */}
+        <a href="#top" className="flex-shrink-0">
           <Image
             src={isDarkMode ? assets.logo_dark : assets.logo}
             alt=""
-            className="w-28 cursor-pointer mt-3 mr-14"
+            className="w-28 cursor-pointer"
           />
         </a>
+
+        {/* Navigation Menu - Center aligned */}
         <ul
-          className={`hidden md:flex items-center justify-center gap-6 lg:gap-8 transition-all duration-300
-            ${isScroll
+          className={`hidden md:flex items-center justify-center gap-6 lg:gap-8 transition-all duration-300 absolute left-1/2 transform -translate-x-1/2 ${
+            isScroll
               ? "px-0 py-0 rounded-none bg-transparent shadow-none border-none"
               : "rounded-full px-12 py-2 bg-light-surface shadow-lg border border-light-border dark:bg-dark-surface dark:shadow-darkHover/20 dark:border-dark-border"
-            }`}
+          }`}
         >
+             
           <li>
             <a className="font-Ovo" href="#top">
               Home
@@ -99,7 +103,9 @@ const Navbar = ({ setIsDarkMode, isDarkMode }) => {
             </button>
           </li>
         </ul>
-        <button className="block md:hidden ml-3" onClick={openMenu}>
+
+        {/* Mobile Menu Button - Right aligned */}
+        <button className="block md:hidden flex-shrink-0" onClick={openMenu}>
           <Image
             src={isDarkMode ? assets.menu_white : assets.menu_black}
             alt=""
@@ -109,39 +115,99 @@ const Navbar = ({ setIsDarkMode, isDarkMode }) => {
         {/* --------------------MOBILE-------------------*/}
         <ul
           ref={sideMenuRef}
-          className="absolute flex md:hidden flex-col gap-4 py-20 px-10 -right-64 top-0 bottom-0 w-64 z-50 h-screen bg-rose-50 transition duration-500 dark:bg-darkHover dark:text-white"
+          className="absolute flex md:hidden flex-col gap-6 py-20 px-8 -right-64 top-0 bottom-0 w-64 z-50 h-screen bg-light-surface dark:bg-dark-surface border-l border-light-border/20 dark:border-dark-border/20 transition duration-500 backdrop-blur-lg"
         >
-          <div className=" absolute right-6 top-6" onClick={closeMenu}>
+          {/* Close Button */}
+          <div className="absolute right-6 top-6" onClick={closeMenu}>
             <Image
               src={isDarkMode ? assets.close_white : assets.close_black}
               alt=""
-              className="w-5 cursor-pointer"
-            ></Image>
+              className="w-5 cursor-pointer hover:scale-110 transition-transform duration-200"
+            />
           </div>
+
+          {/* Navigation Links */}
           <li>
-            <a className="font-Ovo" onClick={closeMenu} href="#top">
+            <a 
+              className="font-Ovo text-light-text-primary dark:text-dark-text-primary hover:text-light-button-primary dark:hover:text-dark-button-primary transition-colors duration-300 text-lg py-2 block" 
+              onClick={closeMenu} 
+              href="#top"
+            >
               Home
             </a>
           </li>
           <li>
-            <a className="font-Ovo" onClick={closeMenu} href="#about">
+            <a 
+              className="font-Ovo text-light-text-primary dark:text-dark-text-primary hover:text-light-button-primary dark:hover:text-dark-button-primary transition-colors duration-300 text-lg py-2 block" 
+              onClick={closeMenu} 
+              href="#about"
+            >
               About Me
             </a>
           </li>
           <li>
-            <a className="font-Ovo" onClick={closeMenu} href="#services">
+            <a 
+              className="font-Ovo text-light-text-primary dark:text-dark-text-primary hover:text-light-button-primary dark:hover:text-dark-button-primary transition-colors duration-300 text-lg py-2 block" 
+              onClick={closeMenu} 
+              href="#services"
+            >
               Services
             </a>
           </li>
           <li>
-            <a className="font-Ovo" onClick={closeMenu} href="#work">
+            <a 
+              className="font-Ovo text-light-text-primary dark:text-dark-text-primary hover:text-light-button-primary dark:hover:text-dark-button-primary transition-colors duration-300 text-lg py-2 block" 
+              onClick={closeMenu} 
+              href="#work"
+            >
               My Work
             </a>
           </li>
           <li>
-            <a className="font-Ovo" onClick={closeMenu} href="#contact">
+            <a 
+              className="font-Ovo text-light-text-primary dark:text-dark-text-primary hover:text-light-button-primary dark:hover:text-dark-button-primary transition-colors duration-300 text-lg py-2 block" 
+              onClick={closeMenu} 
+              href="#contact"
+            >
               Contact Me
             </a>
+          </li>
+
+          {/* Divider */}
+          <li className="border-t border-light-border/20 dark:border-dark-border/20 pt-6">
+            {/* Theme Toggle */}
+            <div className="flex items-center justify-between mb-6">
+              <span className="font-Ovo text-light-text-primary dark:text-dark-text-primary text-lg">
+                Theme
+              </span>
+              <button
+                onClick={() => setIsDarkMode((prev) => !prev)}
+                className="flex items-center gap-2 px-4 py-2 bg-light-button-primary/10 dark:bg-dark-button-primary/10 rounded-full border border-light-button-primary/20 dark:border-dark-button-primary/20 hover:bg-light-button-primary/20 dark:hover:bg-dark-button-primary/20 transition-all duration-300"
+              >
+                <Image
+                  src={isDarkMode ? assets.sun_icon : assets.moon_icon}
+                  alt="Theme toggle"
+                  className="w-5 h-5"
+                />
+                <span className="text-light-button-primary dark:text-dark-button-primary font-medium text-sm">
+                  {isDarkMode ? 'Light' : 'Dark'}
+                </span>
+              </button>
+            </div>
+
+            {/* Contact Button */}
+            <button
+              className="w-full flex items-center justify-center gap-3 px-6 py-3 bg-gradient-to-r from-light-button-primary to-light-button-primaryHover dark:from-dark-button-primary dark:to-dark-button-primaryHover text-light-button-primaryText dark:text-dark-button-primaryText rounded-full font-Ovo font-semibold hover:shadow-lg transition-all duration-300"
+              onClick={() => {
+                closeMenu();
+                window.location.href = '#contact';
+              }}
+            >
+              <span>Contact Me</span>
+              <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 8h8M8 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+              </svg>
+            </button>
           </li>
         </ul>
       </nav>

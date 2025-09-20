@@ -1,4 +1,3 @@
-import user_image from "./user-image.png";
 import code_icon from "./code-icon.png";
 import code_icon_dark from "./code-icon-dark.png";
 import edu_icon from "./edu-icon.png";
@@ -42,6 +41,7 @@ import postman from "./postman.png";
 import wordpress from "./wordpress.png";
 import sql from "./sql.png";
 import gsap from "./gsap.png";
+import figma from "./figma.png";
 import telephone_icon from "./telephone.png";
 import email_icon from "./email.png";
 import linkedin_icon from "./linkedin.png";
@@ -50,8 +50,13 @@ import pbs_logo from "./pbs-logo.jpg";
 import sps_logo from "./sps-logo.jpg";
 import omnisolve_logo from "./omnisolve-logo.jpg";
 import gdg_logo from "./gdg-logo.jpg";
+import edusity from "./edusity.png";
+import omnisolve from "./omnisolve.png";
+import vyro from "./vyro.png";
+import teknoraid from "./teknoraid.png";
+import gaunlet from "./gaunlet.png";
 export const assets = {
-  user_image,
+  
   code_icon,
   code_icon_dark,
   edu_icon,
@@ -96,6 +101,7 @@ export const assets = {
   wordpress,
   sql,
   gsap,
+  figma,
   linkedin_icon,
   telephone_icon,
   programming_icon,
@@ -103,13 +109,27 @@ export const assets = {
   sps_logo,
   omnisolve_logo,
   gdg_logo,
+  teknoraid,
+  omnisolve,
+  vyro,
+  gaunlet, 
+  edusity,
 };
 
 export const workData = [
   {
+  title: "OmniSolve AI",
+  description: "AI-powered business solutions platform.",
+  bgImage: omnisolve, // make sure you have imported an image/asset with this name
+  link: "https://www.omnisolveai.digital/",
+  details:
+    "Custom-built with Next.js and Tailwind CSS to showcase AI-driven services. Features include responsive design, dynamic content sections, SEO optimization, and deployment on Vercel.",
+},
+,
+  {
     title: "Teknoraid",
     description: "Blog site focused on gaming reviews and tutorials.",
-    bgImage: "/teknoraid.png",
+    bgImage: teknoraid,
     link: "https://teknoraid.com/",
     details:
       "Built with WordPress and Elementor for a tech and gaming audience. Includes SEO optimization, structured posts, and responsive layout.",
@@ -117,7 +137,7 @@ export const workData = [
   {
     title: "Vyro",
     description: "An eCommerce platform for tech gadgets.",
-    bgImage: "/vyro.png",
+    bgImage: vyro,
     link: "https://vyro-nine.vercel.app/",
     details:
       "Built in Next.js with MongoDB and admin dashboard. Includes user auth, CRUD, wishlist, and order management with scaling.",
@@ -125,7 +145,7 @@ export const workData = [
   {
     title: "Edusity",
     description: "A responsive website for an educational institution.",
-    bgImage: "/educity.png",
+    bgImage: edusity,
     link: "https://edusity-react-project-pt4u.vercel.app/",
     details:
       "Built in React using Redux and integrated with Web3 Forms. Front-end responsive platform for an education portal with featured courses and contact form.",
@@ -133,7 +153,7 @@ export const workData = [
   {
     title: "Gaunlet Gaming",
     description: "An eCommerce site for gaming gadgets.",
-    bgImage: "/gaunlet.png",
+    bgImage: gaunlet,
     link: "https://nxatwork.42web.io/",
     details:
       "WordPress-based WooCommerce store for gaming accessories. Features product listings, checkout, and blog integration with SEO.",
@@ -184,7 +204,7 @@ export const infoList = [
     icon: assets.code_icon,
     iconDark: assets.code_icon_dark,
     title: "Languages",
-    description: "HTML, CSS, JavaScript React Js, Next Js, Java, Python, C++,",
+    description: "JavaScript, React Js, Next Js, MQL, SQL, Node JS,Java, Python, C++,",
   },
   {
     icon: assets.edu_icon,
@@ -196,7 +216,7 @@ export const infoList = [
     icon: assets.project_icon,
     iconDark: assets.project_icon_dark,
     title: "Projects",
-    description: "Built more than 5 projects",
+    description: "10+ projects",
   },
 ];
 
@@ -209,14 +229,19 @@ export const toolsData = [
   { title: "Git", tool: assets.git },
   { title: "Github", tool: assets.github },
   { title: "Postman", tool: assets.postman },
-  { title: "GSAP", tool: gsap },
+  { title: "GSAP", tool: assets.gsap },
   { title: "VS Code", tool: assets.vscode },
+  { title: "Figma", tool: assets.figma },
+  { title: "API", tool: assets.api_icon },
+  { title: "Database", tool: assets.database_icon },
+  { title: "Frontend", tool: assets.frontend_icon },
+  { title: "Web Dev", tool: assets.webdev_icon },
 ];
 
 export const experienceData = [
   {
     id: 1,
-    title: "AI Intern (Frontend & Product Integration)",
+    title: "Web Developer ",
     company: "OmniSolve AI",
     period: "Aug 2025 - Present",
     location: "Remote",

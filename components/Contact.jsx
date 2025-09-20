@@ -51,10 +51,18 @@ const Contact = () => {
         initial={{ y: -20, opacity: 0 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="text-center text-3xl sm:text-4xl md:text-5xl font-Ovo mb-4 sm:mb-6 text-green-600 dark:text-green-400"
+        className="text-center text-3xl sm:text-4xl md:text-5xl font-Ovo mb-2 sm:mb-4 text-green-600 dark:text-green-400"
       >
         Get In Touch
       </motion.h2>
+
+      <motion.div
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        transition={{ duration: 1, delay: 0.6 }}
+        className="w-20 h-1 bg-gradient-to-r from-green-600 to-green-500 dark:from-green-400 dark:to-green-300 mx-auto mt-2 mb-4 sm:mb-6 rounded-full"
+      />
+
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -167,7 +175,7 @@ const Contact = () => {
 
             {/* Phone */}
             <div className="flex flex-col items-center text-center p-4 rounded-2xl bg-light-surface dark:bg-dark-surface shadow-xl border border-light-textSecondary/10 dark:border-dark-textSecondary/10">
-              <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mb-3">
+              <div className="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center mb-3">
                 <HiPhone className="text-white text-xl" />
               </div>
               <h3 className="text-lg font-bold text-light-text dark:text-dark-text mb-2">Phone</h3>
@@ -176,7 +184,7 @@ const Contact = () => {
 
             {/* GitHub */}
             <a
-              href="https://github.com/your-username"
+              href="https://github.com/Kaab-Bhinder"
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-col items-center text-center p-4 rounded-2xl bg-light-surface dark:bg-dark-surface shadow-xl border border-light-textSecondary/10 dark:border-dark-textSecondary/10 hover:shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer group"
