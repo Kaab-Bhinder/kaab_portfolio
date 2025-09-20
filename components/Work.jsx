@@ -6,12 +6,12 @@ import { motion } from "motion/react";
 const Work = ({ isDarkMode }) => {
   const [flippedIndex, setFlippedIndex] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
-  
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 640);
     };
-    
+
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -66,7 +66,7 @@ const Work = ({ isDarkMode }) => {
         portfolio showcases projects that highlight creativity, precision, and
         innovation. Let's build something amazing together!
       </motion.p>
-      
+
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -82,13 +82,12 @@ const Work = ({ isDarkMode }) => {
               onClick={() => handleMobileFlip(ind)}
             >
               <motion.div
-                className={`relative w-full h-full preserve-3d transition-transform duration-700 ease-in-out ${
-                  isMobile
+                className={`relative w-full h-full preserve-3d transition-transform duration-700 ease-in-out ${isMobile
                     ? isFlipped
                       ? "rotate-y-180"
                       : ""
                     : "group-hover:rotate-y-180"
-                }`}
+                  }`}
                 style={{
                   minHeight: 420,
                   height: "100%",
@@ -115,7 +114,7 @@ const Work = ({ isDarkMode }) => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
-                  
+
                   <div className="relative z-20 p-3 w-full flex flex-col items-center justify-center text-center flex-1 pb-12">
                     <a
                       href={project.link}
@@ -123,9 +122,17 @@ const Work = ({ isDarkMode }) => {
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      <h2 className="font-bold text-lg text-light-text-primary dark:text-dark-text-primary mb-1 hover:text-light-button-primary dark:hover:text-dark-button-primary transition-colors duration-300">
+                      <h2
+                        className="project-card-title font-bold 
+             text-base sm:text-lg xl:text-xl
+             text-light-text-primary dark:text-dark-text-primary 
+             mb-1 
+             hover:text-light-button-primary dark:hover:text-dark-button-primary 
+             transition-colors duration-300"
+                      >
                         {project.title}
                       </h2>
+
                     </a>
                     <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary mb-2 line-clamp-2">
                       {project.description}
@@ -149,7 +156,7 @@ const Work = ({ isDarkMode }) => {
                   }}
                 >
                   <div className="flex-1 flex flex-col items-center justify-center text-center pb-12">
-                    <h2 className="font-bold text-lg text-light-button-primary dark:text-dark-button-primary mb-2 text-center">
+                    <h2 className="project-card-title font-bold text-lg text-light-button-primary dark:text-dark-button-primary mb-2 text-center">
                       {project.title}
                     </h2>
                     <p className="text-light-text-secondary dark:text-dark-text-secondary mb-3 text-center text-sm leading-relaxed">
@@ -216,7 +223,7 @@ const Work = ({ isDarkMode }) => {
           className="w-4"
         />
       </motion.a>
-      
+
       {/* Bottom decoration with animated elements */}
       <motion.div
         initial={{ opacity: 0 }}

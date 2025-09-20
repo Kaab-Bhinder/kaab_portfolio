@@ -13,6 +13,11 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        'tablet': '768px',
+        'tablet-lg': '1024px',  // iPad Pro specific breakpoint
+        'desktop': '1280px',
+      },
       colors: {
         light: {
           bg: "#F5F6FA", // slightly off-white, subtle blue-gray

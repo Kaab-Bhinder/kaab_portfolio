@@ -49,10 +49,10 @@ const Navbar = ({ setIsDarkMode, isDarkMode }) => {
 
         {/* Navigation Menu - Center aligned */}
         <ul
-          className={`hidden md:flex items-center justify-center gap-6 lg:gap-8 transition-all duration-300 absolute left-1/2 transform -translate-x-1/2 ${
+          className={`hidden xl:flex items-center justify-center gap-6 2xl:gap-8 transition-all duration-300 absolute left-1/2 transform -translate-x-1/2 ${
             isScroll
               ? "px-0 py-0 rounded-none bg-transparent shadow-none border-none"
-              : "rounded-full px-12 py-2 bg-light-surface shadow-lg border border-light-border dark:bg-dark-surface dark:shadow-darkHover/20 dark:border-dark-border"
+              : "rounded-full px-6 xl:px-8 2xl:px-12 py-2 bg-light-surface shadow-lg border border-light-border dark:bg-dark-surface dark:shadow-darkHover/20 dark:border-dark-border"
           }`}
         >
              
@@ -88,13 +88,14 @@ const Navbar = ({ setIsDarkMode, isDarkMode }) => {
             </li>
           <li>
             <button
-              className={`flex items-center gap-3 px-5 py-1 border rounded-2xl font-Ovo transition-colors duration-200
+              className={`flex items-center gap-2 xl:gap-3 px-3 xl:px-5 py-1 border rounded-2xl font-Ovo transition-colors duration-200 text-sm xl:text-base
                 bg-light-button-primary text-light-button-primaryText border-light-button-primary hover:bg-light-button-primaryHover hover:text-light-button-primaryText
                 dark:bg-dark-button-primary dark:text-dark-button-primaryText dark:border-dark-button-primary dark:hover:bg-dark-button-primaryHover dark:hover:text-dark-button-primaryText`
               }
               onClick={() => window.location.href = '#contact'}
             >
-              Contact Me
+              <span className="hidden xl:inline">Contact Me</span>
+              <span className="xl:hidden">Contact</span>
               <span className="w-3 h-3 flex items-center">
                 <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="w-3 h-3">
                   <path d="M4 8h8M8 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
@@ -105,7 +106,7 @@ const Navbar = ({ setIsDarkMode, isDarkMode }) => {
         </ul>
 
         {/* Mobile Menu Button - Right aligned */}
-        <button className="block md:hidden flex-shrink-0" onClick={openMenu}>
+        <button className="block xl:hidden flex-shrink-0" onClick={openMenu}>
           <Image
             src={isDarkMode ? assets.menu_white : assets.menu_black}
             alt=""
@@ -115,7 +116,7 @@ const Navbar = ({ setIsDarkMode, isDarkMode }) => {
         {/* --------------------MOBILE-------------------*/}
         <ul
           ref={sideMenuRef}
-          className="absolute flex md:hidden flex-col gap-6 py-20 px-8 -right-64 top-0 bottom-0 w-64 z-50 h-screen bg-light-surface dark:bg-dark-surface border-l border-light-border/20 dark:border-dark-border/20 transition duration-500 backdrop-blur-lg"
+          className="absolute flex xl:hidden flex-col gap-6 py-20 px-8 -right-64 top-0 bottom-0 w-64 z-50 h-screen bg-light-surface dark:bg-dark-surface border-l border-light-border/20 dark:border-dark-border/20 transition duration-500 backdrop-blur-lg"
         >
           {/* Close Button */}
           <div className="absolute right-6 top-6" onClick={closeMenu}>

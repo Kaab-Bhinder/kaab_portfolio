@@ -102,7 +102,7 @@ const Skills = () => {
       />
 
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-4 sm:gap-6 xl:gap-8">
           {skillsData.map((category, categoryIndex) => (
             <motion.div
               key={category.category}
@@ -111,12 +111,12 @@ const Skills = () => {
               transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
               className="group"
             >
-              <div className="bg-light-surface dark:bg-dark-surface rounded-xl lg:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-light-textSecondary/10 dark:border-dark-textSecondary/10 hover:border-light-button-primary/20 dark:hover:border-dark-button-primary/20 h-full">
+              <div className="bg-light-surface dark:bg-dark-surface rounded-xl 2xl:rounded-2xl p-4 sm:p-6 xl:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-light-textSecondary/10 dark:border-dark-textSecondary/10 hover:border-light-button-primary/20 dark:hover:border-dark-button-primary/20 h-full">
                 <motion.h3
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: categoryIndex * 0.1 + 0.2 }}
-                  className="text-lg sm:text-xl lg:text-2xl font-bold text-light-text dark:text-dark-text mb-4 sm:mb-6 text-center group-hover:text-light-button-primary dark:group-hover:text-dark-button-primary transition-colors duration-300"
+                  className="text-lg sm:text-xl 2xl:text-2xl font-bold text-light-text dark:text-dark-text mb-4 sm:mb-6 text-center group-hover:text-light-button-primary dark:group-hover:text-dark-button-primary transition-colors duration-300"
                 >
                   {category.category}
                 </motion.h3>

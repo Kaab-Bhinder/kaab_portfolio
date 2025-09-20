@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const ToolsSlider = () => {
   return (
-    <div className="w-screen overflow-hidden py-4 bg-dark-bg text-dark-text dark:bg-light-bg dark:text-light-text transition-colors duration-300">
+    <div className="w-full overflow-hidden py-4 bg-dark-bg text-dark-text dark:bg-light-bg dark:text-light-text transition-colors duration-300">
       <motion.div
         className="flex items-center gap-16 whitespace-nowrap px-0"
         initial={{ x: 0 }}

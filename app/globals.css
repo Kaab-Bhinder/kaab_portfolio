@@ -32,6 +32,20 @@ body {
   max-width: 100vw;
 }
 
+/* Prevent any element from exceeding viewport width */
+* {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Container constraints */
+.container,
+main,
+section,
+div {
+  max-width: 100vw;
+}
+
 /* Mobile Responsive Utilities */
 @media (max-width: 640px) {
   .container {
@@ -53,6 +67,105 @@ body {
   .mobile-button {
     padding: 0.75rem 1.5rem;
     font-size: 0.875rem;
+  }
+}
+
+/* iPad Pro specific fixes */
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Navbar fixes for tablet */
+  nav ul {
+    gap: 1rem !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+  
+  /* Header spacing fixes */
+  .header-content {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+  
+  /* Skills grid layout for tablet */
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.5rem !important;
+  }
+  
+  /* Text scaling for better readability on tablets */
+  h1 {
+    font-size: clamp(2rem, 4vw, 3rem) !important;
+  }
+  
+  /* Only apply larger sizing to main section headings, not project card titles */
+  h2:not(.project-card-title) {
+    font-size: clamp(1.5rem, 3vw, 2.5rem) !important;
+  }
+  
+  /* Keep project card titles consistent */
+  .project-card-title {
+    font-size: 1.125rem !important; /* text-lg equivalent */
+  }
+}
+
+/* Specific fixes for 1302x1644 and similar large tablet/small desktop viewports */
+@media (min-width: 1025px) and (max-width: 1439px) {
+  /* Force mobile navigation at this breakpoint */
+  .navbar-desktop {
+    display: none !important;
+  }
+  
+  .navbar-mobile-btn {
+    display: block !important;
+  }
+  
+  /* Header mobile layout for this range */
+  .header-flex {
+    flex-direction: column !important;
+    text-align: center !important;
+  }
+  
+  .header-image {
+    display: none !important;
+  }
+  
+  /* Skills 2-column layout */
+  .skills-container {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 2rem !important;
+  }
+  
+  /* Navbar spacing adjustments */
+  nav {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+  
+  /* Better text sizing for this viewport */
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem) !important;
+  }
+  
+  h2 {
+    font-size: clamp(2rem, 4vw, 3rem) !important;
+  }
+  
+  h3 {
+    font-size: clamp(1.25rem, 3vw, 1.75rem) !important;
+  }
+  
+  /* Keep project card titles small and consistent in this range */
+  .project-card-title {
+    font-size: 1rem !important; /* text-base equivalent - smaller for this problematic range */
+    line-height: 1.5 !important;
+  }
+}
+
+/* Specific fix for 923px-1412px range where project card text gets too big */
+@media (min-width: 923px) and (max-width: 1412px) {
+  .project-card-title {
+    font-size: 0.95rem !important; /* Even smaller for this specific range */
+    line-height: 1.4 !important;
+    font-weight: 600 !important; /* Slightly reduce font weight to make it look less heavy */
   }
 }
 

@@ -35,7 +35,7 @@ export default function Home() {
     }
   }, [isDarkMode]);
   return (
-    <>
+    <div className="w-full overflow-x-hidden">
       <Navbar setIsDarkMode={setIsDarkMode} isDarkMode={isDarkMode} />
       <Header />
       <ToolsSlider isDarkMode={isDarkMode} />
@@ -47,6 +47,6 @@ export default function Home() {
       <Contact isDarkMode={isDarkMode} />
       <Footer isDarkMode={isDarkMode} />
       <SocialSidebar />
-    </>
+    </div>
   );
 }

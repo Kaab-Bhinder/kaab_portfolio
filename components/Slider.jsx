@@ -26,7 +26,7 @@ const combined = [
 
 const Slider = () => {
   return (
-  <div className="w-screen overflow-hidden py-8 bg-gray-900 dark:bg-gray-100 transition-colors duration-300">
+  <div className="w-full overflow-hidden py-8 bg-gray-900 dark:bg-gray-100 transition-colors duration-300">
     <motion.div
       className="flex items-center gap-16 whitespace-nowrap px-0"
       initial={{ x: 0 }}
