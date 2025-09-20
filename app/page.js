@@ -10,6 +10,7 @@ import Skills from "@/components/Skills";
 import SocialSidebar from "@/components/SocialSidebar";
 import ToolsSlider from "@/components/ToolsSlider";
 import { BackgroundBeams } from "@/components/ui/background-beams";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import Work from "@/components/Work";
 import React, { useEffect, useState } from "react";
 export default function Home() {
@@ -47,6 +48,7 @@ export default function Home() {
       <Contact isDarkMode={isDarkMode} />
       <Footer isDarkMode={isDarkMode} />
       <SocialSidebar />
+      <WhatsAppButton isDarkMode={isDarkMode} />
     </div>
   );
 }
